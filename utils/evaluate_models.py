@@ -34,4 +34,20 @@ def print_evaluation(evaluation_results):
             print(f"Label {label}:")
             for metric, value in metrics.items():
                 print(f"  {metric}: {value:.4f}")
-    
+
+def plot_confusion_matrix(cm, class_names=['Normal', 'Anomaly'],title="model"):
+    """
+    Plot confusion matrix using matplotlib.
+    Parameters:
+    cm (array): Confusion matrix.
+    class_names (list): List of class names.
+    """
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
+    plt.ylabel('Actual')
+    plt.xlabel('Predicted')
+    plt.title('Confusion Matrix'+" for "+title, fontsize=16, pad=20)
+    plt.show()
